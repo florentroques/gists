@@ -1,0 +1,52 @@
+<script>
+    $(document).ready(function () {
+        const $headerLogoImg = $('#header-logo img');
+        const $headerButton = $('#header-button');
+
+        const logoMinPath = '/wp-content/uploads/2024/02/logo-tree-72x68-1.png';
+        const logoMaxPath = '/wp-content/uploads/2024/02/logo-horizontal-277x68-1.png';
+
+        const headerButtonMaxText = 'スピリチュアル・セッションを予約する';
+        const headerButtonMinText = 'セッションを予約する';
+
+        if ($(window).width() <= 815) {
+            $headerLogoImg.attr('src', logoMinPath).show();
+
+            if ($(window).width() <= 550) {
+                $headerButton.text(headerButtonMinText);
+                $headerButton.show();
+            }
+            else {
+                $headerButton.text(headerButtonMaxText);
+                $headerButton.show();
+            }
+        }
+        else {
+            $headerLogoImg.attr('src', logoMaxPath).css('width', '100%').show();
+
+            $headerButton.text(headerButtonMaxText);
+            $headerButton.show();
+        }
+
+        $(window).resize(function() {
+            if ($(window).width() <= 815) {
+                $headerLogoImg.attr('src', logoMinPath).show();
+
+                if ($(window).width() <= 550) {
+                    $headerButton.text(headerButtonMinText);
+                    $headerButton.show();
+                }
+                else {
+                    $headerButton.text(headerButtonMaxText);
+                    $headerButton.show();
+                }
+            }
+            else {
+                $headerLogoImg.attr('src', logoMaxPath).css('width', '100%').show();
+
+                $headerButton.text(headerButtonMaxText);
+                $headerButton.show();
+            }
+        });
+    });
+</script>

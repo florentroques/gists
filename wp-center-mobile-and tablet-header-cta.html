@@ -1,0 +1,34 @@
+<script type="text/javascript">
+    function centerHeaderCTAButton(columnSelector, buttonSelector) {
+        const columnWidth = $(columnSelector).outerWidth();
+        const buttonWidth = $(buttonSelector).outerWidth(); 
+        const centeringMargin = (columnWidth-buttonWidth)/2;  
+        $(buttonSelector).css("marginRight", centeringMargin); 
+    }
+
+    function centerHeaderCTAButtons() {
+        // Mobile
+        if ($(window).width() <= 767) {
+            centerHeaderCTAButton(
+                '#header-cta-button-mobile-column',
+                '#header-cta-button-mobile'
+            );
+        }
+        // Tablet
+        else if ($(window).width() <= 980) {
+            centerHeaderCTAButton(
+                '#header-cta-button-tablet-column',
+                '#header-cta-button-tablet'
+            );
+        }
+    }
+
+    $(document).ready(function() {
+        centerHeaderCTAButtons();
+
+        $(window).resize(function() {
+            centerHeaderCTAButtons();
+        });
+    });
+</script>
+

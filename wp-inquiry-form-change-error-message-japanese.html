@@ -1,0 +1,34 @@
+<style>
+    .et-pb-contact-message {
+        display: none;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('.et_pb_contact_submit').on('click', function() {
+            let hasError = false;
+
+            setTimeout(function() {
+                if ($( "p:contains('Please, fill in the following fields:')" ).length > 0) {
+                    $( "p:contains('Please, fill in the following fields:')" ).text('以下の欄にご記入ください：');
+                    $('.et-pb-contact-message').show();
+                    hasError = true;
+                }
+
+                if (hasError) {
+                    return;
+                }
+
+                const timer = setInterval(showSuccessMessage, 1000);
+
+                function showSuccessMessage() {
+                    if($('p:contains("お問い合わせは正常に送信されました。")').length > 0) {
+                        clearInterval(timer);
+                        $('.et-pb-contact-message').css('text-align', 'center').show();
+                        return;
+                    }
+                }
+            }, 100);
+        });      
+    });
+</script>
